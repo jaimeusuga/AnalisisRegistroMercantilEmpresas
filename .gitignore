@@ -1,0 +1,65 @@
+# ==========================================
+# 1. ENTORNOS VIRTUALES
+# ==========================================
+.venv/
+venv/
+env/
+
+# ==========================================
+# 2. DATOS: BRONZE, SILVER Y GOLD
+# ==========================================
+# Ignorar los archivos de datos, pero
+# conservar la estructura de directorios.
+/data/bronze/**
+/data/silver/**
+/data/gold/**
+
+# Permitir archivos .gitkeep
+!/data/bronze/**/
+!/data/silver/**/
+!/data/gold/**/
+!/data/**/.gitkeep
+
+# ==========================================
+# 3. ARCHIVOS TEMPORALES DE PYTHON
+# ==========================================
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ==========================================
+# 4. JUPYTER NOTEBOOKS
+# ==========================================
+.ipynb_checkpoints/
+
+# ==========================================
+# 5. CONFIGURACIONES Y CREDENCIALES
+# ==========================================
+.env
+.env.*
+!.env.example
+config/secrets.*
+*.pem
+*.key
+
+# ==========================================
+# 6. ARCHIVOS TEMPORALES Y LOGS
+# ==========================================
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# ==========================================
+# 7. REPORTES GENERADOS
+# ==========================================
+/reports/generated/
+
+# ==========================================
+# 8. ARCHIVOS DE HERRAMIENTAS
+# ==========================================
+.vscode/settings.local.json
