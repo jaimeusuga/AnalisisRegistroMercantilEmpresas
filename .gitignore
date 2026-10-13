@@ -1,65 +1,94 @@
-# ==========================================
+# ============================================================
+# PROYECTO MERCANTIL - INGENIERÍA DE DATOS
+# CRISP-DM | ARQUITECTURA MEDALLÓN
+# ============================================================
+
 # 1. ENTORNOS VIRTUALES
-# ==========================================
 .venv/
 venv/
 env/
+ENV/
 
-# ==========================================
-# 2. DATOS: BRONZE, SILVER Y GOLD
-# ==========================================
-# Ignorar los archivos de datos, pero
-# conservar la estructura de directorios.
-/data/bronze/**
-/data/silver/**
-/data/gold/**
-
-# Permitir archivos .gitkeep
-!/data/bronze/**/
-!/data/silver/**/
-!/data/gold/**/
-!/data/**/.gitkeep
-
-# ==========================================
-# 3. ARCHIVOS TEMPORALES DE PYTHON
-# ==========================================
+# 2. PYTHON - ARCHIVOS TEMPORALES Y CACHÉ
 __pycache__/
 *.py[cod]
 *.egg-info/
+.eggs/
+build/
+dist/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.coverage
+htmlcov/
 
-# ==========================================
-# 4. JUPYTER NOTEBOOKS
-# ==========================================
+# 3. JUPYTERLAB
 .ipynb_checkpoints/
+.jupyter/
+.jupyterlab/
 
-# ==========================================
-# 5. CONFIGURACIONES Y CREDENCIALES
-# ==========================================
+# 4. DATOS - ARQUITECTURA MEDALLÓN
+# Ignorar datos de Bronze, Silver y Gold
+# Conservar la estructura de carpetas con .gitkeep
+/data/**
+!/data/**/
+!/data/**/.gitkeep
+
+# 5. BASES DE DATOS DUCKDB
+*.duckdb
+*.duckdb.wal
+*.duckdb.tmp/
+*.db
+*.db-wal
+*.db-shm
+
+# 6. ARCHIVOS DE DATOS
+*.parquet
+*.csv
+*.tsv
+*.jsonl
+*.ndjson
+*.feather
+*.arrow
+*.xlsx
+*.xls
+
+# 7. VARIABLES DE ENTORNO Y CREDENCIALES
 .env
 .env.*
 !.env.example
-config/secrets.*
 *.pem
 *.key
+secrets.yaml
+secrets.json
 
-# ==========================================
-# 6. ARCHIVOS TEMPORALES Y LOGS
-# ==========================================
+# 8. ARCHIVOS TEMPORALES Y LOGS
 *.log
+logs/
+tmp/
+temp/
 *.tmp
 *.bak
+*.swp
+*~
+
+# 9. SISTEMA OPERATIVO
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# ==========================================
-# 7. REPORTES GENERADOS
-# ==========================================
-/reports/generated/
+# 10. CONFIGURACIONES LOCALES DE EDITORES
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
 
-# ==========================================
-# 8. ARCHIVOS DE HERRAMIENTAS
-# ==========================================
-.vscode/settings.local.json
+# 11. REPORTES GENERADOS
+# Ignorar figuras automáticas y conservar .gitkeep
+/reports/figures/**
+!/reports/figures/**/
+!/reports/figures/**/.gitkeep
+
+# 12. POWER BI - ARCHIVOS TEMPORALES
+*.pbit.tmp
+*.pbix.tmp
