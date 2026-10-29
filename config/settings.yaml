@@ -1,0 +1,66 @@
+
+# CONFIGURACIÓN GENERAL - PROYECTOMERCANTIL
+
+project:
+  name: ProyectoMercantil
+  methodology: CRISP-DM
+  architecture: medallion
+
+sources:
+  rues:
+    url: https://www.datos.gov.co/resource/c82u-588k.json
+
+  trm:
+    url: https://www.datos.gov.co/resource/mcec-87by.json
+
+  ciiu:
+    url: https://www.datos.gov.co/resource/nuke-fusu.json
+
+  secop_ii:
+    url: https://www.datos.gov.co/resource/jbjy-vk9h.json
+
+paths:
+  bronze: data/bronze
+  silver: data/silver
+  gold: data/gold
+  reports: reports
+
+
+# ============================================================
+# Objetivo:
+# Centralizar los parámetros utilizados para extraer los datos
+# de las API y almacenarlos en la capa Bronze.
+#
+# Descripción:
+# Define el período de RUES, el tamaño de página para consultar
+# la API y el formato de almacenamiento de los registros.
+# ============================================================
+
+ingestion:
+  rues:
+    date_field: fecha_matricula
+    start_date: "2025-01-01"
+    end_date_exclusive: "2027-01-01"
+    frequency: monthly
+    page_size: 10000
+
+  secop_ii:
+    date_field: fecha_de_firma
+    frequency: monthly
+    page_size: 10000
+
+
+
+# CONFIGURACIÓN DE ALMACENAMIENTO - ARQUITECTURA MEDALLÓN
+# ============================================================
+# Objetivo:
+# Definir el formato y la compresión de los datos.
+#
+# Descripción:
+# Utilizar Parquet como formato columnar y ZSTD como
+# algoritmo de compresión para los archivos de Bronze.
+# ============================================================
+
+storage:
+  format: parquet
+  compression: zstd
